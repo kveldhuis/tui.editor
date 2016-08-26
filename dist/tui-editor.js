@@ -6748,6 +6748,7 @@
 	    this.layout.changePreviewStyle(style);
 	    this.mdPreviewStyle = style;
 	    this.eventManager.emit('changePreviewStyle', style);
+	    this.eventManager.emit('previewNeedsRefresh');
 	};
 
 	/**
@@ -8245,7 +8246,7 @@
 	 */
 	Preview.prototype._initEvent = function() {
 	    var self = this;
-	    var latestMarkdownValue;
+	    var latestMarkdownValue = '';
 
 	    this.eventManager.listen('contentChangedFromMarkdown', function(markdownEditor) {
 	        latestMarkdownValue = markdownEditor.getValue();
